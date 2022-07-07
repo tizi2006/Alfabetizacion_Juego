@@ -12,17 +12,24 @@ ventana = tkinter.Tk()
 ventana.resizable(height = 0, width = 0)
 
 
+
 frame = tkinter.Frame(ventana)
 frame2 = tkinter.Frame(ventana)
 frame3 = tkinter.Frame(ventana)
+frame4 = tkinter.Frame(ventana)
 frame.grid(row=0, column=0)
 frame2.grid(row=1, column=0)
 frame3.grid(row=0, column=0)
+frame4.grid(row=2, column=0)
+
+
 
 contenido1 = os.listdir('fotos/')
 rango=(len(contenido1))
 contenido= []
 puntos = 0
+
+
 for i in range (rango):
     elemento = random.randint(0, len(contenido1)-1)
     contenido.append(contenido1.pop(elemento))
@@ -34,13 +41,10 @@ def sortear(panel):
     global pos
     img = next(photos)
     pos+=1
-    #fotorandom = random.choice(contenido)
-    #print(fotorandom)
-    #foto = ImageTk.PhotoImage(Image.open('fotos/'+fotorandom))
     panel.config(image=img)
 
 
-panel = tkinter.Label(frame)
+panel = tkinter.Label(frame2)
 foto = sortear(panel)
 panel.config(image=foto)
 
@@ -57,23 +61,26 @@ def intermedia():
     panel = tkinter.Label(frame)
     sortear(panel)
 
+eaa = tkinter.Label(frame3, text= "ACERTADAS:"+str(puntos))
+eaa.pack()
 
 def v2(i):
     global puntos
     if vocales[i] == contenido[pos-1][0].upper():
+        frame3.configure(background="green")
         puntos+=1
-        tkinter.messagebox.showinfo("JUEGO",f"GANASTE {puntos}")
+        eaa.config(background="green", text= "ACERTADAS:"+str(puntos))
         sortear(panel)
         
     else:
-        tkinter.messagebox.showinfo("JUEGO","PERDISTE")
+        eaa.config(background="red", text= "ACERTADAS:"+str(puntos))
         sortear(panel)
 
 
 
 for i in range(5):
     boton_lista=[]
-    boton = tkinter.Button(frame2,command=partial(v2, i),text=vocales[i])
+    boton = tkinter.Button(frame4,command=partial(v2, i),text=vocales[i])
     boton_lista.append(boton)
     boton.grid(column=i,row=0)
     
@@ -81,8 +88,6 @@ for i in range(5):
 
 
     
-
-
 
 
 ventana.mainloop()
