@@ -6,10 +6,18 @@ from functools import partial
 import time
 from itertools import cycle
 from tkinter import messagebox
+from pynput.keyboard import Key, Listener 
 
 vocales = ["A","E","I","O","U"]
 ventana = tkinter.Tk()
 ventana.resizable(height = 0, width = 0)
+ 
+def tecla(e):
+    if(e.char.upper() in vocales):
+        indice = vocales.index(e.char.upper())
+        v2(indice)
+
+ventana.bind("<Key>", tecla)
 
 
 
@@ -82,6 +90,7 @@ for i in range(5):
     boton_lista=[]
     boton = tkinter.Button(frame4,command=partial(v2, i),text=vocales[i])
     boton_lista.append(boton)
+    
     boton.grid(column=i,row=0)
     
 
