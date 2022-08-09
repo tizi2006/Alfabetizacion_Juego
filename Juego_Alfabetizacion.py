@@ -6,7 +6,44 @@ from functools import partial
 import time
 from itertools import cycle
 from tkinter import messagebox
-from pynput.keyboard import Key, Listener 
+from pynput.keyboard import Key, Listener
+from tkinter import ttk
+
+
+ventana1 = tkinter.Tk()
+ventana1.title("Dificultad")
+ventana1.geometry('250x150')
+ls_des = ttk.Combobox(ventana1,width=17)
+ls_des.place(x=30,y=77)
+opciones = ["Vocales","Pa,Pe,Pi,Po,Pu","Ma,Me,Mi,Mo,Mu"]
+ls_des['values']=opciones
+
+def iniciar():
+    iniciarJuego(ls_des.get())
+
+boton2 = ttk.Button(text="Jugar",command=iniciar)
+boton2.place(x=70, y=100)
+    
+def iniciarJuego(nivel):
+    niveles = {
+        'Vocales',
+        'Pa,Pe,Pi,Po,Pu',
+        'Ma,Me,Mi,Mo,Mu'
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 vocales = ["A","E","I","O","U"]
 ventana = tkinter.Tk()
