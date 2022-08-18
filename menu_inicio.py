@@ -1,7 +1,9 @@
 import tkinter
 from tkinter import ttk
 from vocales import JuegoVocales
+from PIL import ImageTk, Image
 import os
+
 
 class Juego:
 
@@ -13,7 +15,7 @@ class Juego:
         self.ls_des.place(x=30,y=77)
         self.opciones = ["Vocales","Pa,Pe,Pi,Po,Pu","Ma,Me,Mi,Mo,Mu"]
         self.ls_des['values']=self.opciones
-        self.boton2 = ttk.Button(text="Jugar", command=self.iniciar)
+        self.boton2 = ttk.Button(text="Jugar", command=self.iniciar_main)
         self.boton2.place(x=70, y=100)
         self.nivel = ""
         self.juego = ""
@@ -24,14 +26,14 @@ class Juego:
         }
         self.ventana1.mainloop()
 
-    def iniciar(self):
+    def iniciar_main(self):
         self.nivel = self.ls_des.get()
         self.iniciarjuego()
 
     def iniciarjuego(self):
         self.juego = self.niveles[self.nivel]()
         self.juego.contenido1 = os.listdir('fotos/')
-        self.juego.iniciarjuego()
+        self.juego.iniciar()
 
 
 if __name__ == "__main__":

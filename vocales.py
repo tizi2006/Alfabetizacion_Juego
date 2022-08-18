@@ -25,9 +25,10 @@ class JuegoVocales:
         self.contenido = []
         self.puntos = 0
         self.pos = 0
-        self.panel = tkinter.Label(self.frame2)
         self.mezclar()
         self.foto = self.sortear()
+        self.panel = tkinter.Label(self.frame2)
+        print(self.foto)
         self.panel.config(image=self.foto)
         self.panel.pack(side="bottom", fill="both", expand="yes")
         self.eaa = tkinter.Label(self.frame3, text= "ACERTADAS:"+str(self.puntos))
@@ -54,10 +55,10 @@ class JuegoVocales:
             self.v2(self.indice)
 
     def sortear(self):
-        ima = Image.open('fotos/' + self.contenido[self.pos])
-        img = ImageTk.PhotoImage(ima)
+        self.ima = Image.open('fotos/' + self.contenido[self.pos])
+        self.img = ImageTk.PhotoImage(self.ima)
         self.pos += 1
-        return img
+        return self.img
 
     def recargar(self, panel):
         panel.destroy()
