@@ -9,7 +9,7 @@ import time
 class JuegoVocales:
     
     def __init__(self):
-        self.vocales = ["A", "E", "I", "O", "U"]
+        self.vocales = ["PA", "PE", "PI", "PO", "PU"]
         self.ventana = tkinter.Tk()
         self.ventana.resizable(height=False, width=False)
         self.frame = tkinter.Frame(self.ventana)
@@ -20,7 +20,7 @@ class JuegoVocales:
         self.frame2.grid(row=1, column=0)
         self.frame3.grid(row=0, column=0)
         self.frame4.grid(row=2, column=0)
-        self.contenido1 = os.listdir('fotos/')
+        self.contenido1 = os.listdir('PPP/')
         self.rango = (len(self.contenido1))
         self.contenido = []
         self.puntos = 0
@@ -54,7 +54,7 @@ class JuegoVocales:
             self.v2(self.indice)
 
     def sortear(self):
-        self.ima = Image.open('fotos/' + self.contenido[self.pos])
+        self.ima = Image.open('PPP/' + self.contenido[self.pos])
         self.img = ImageTk.PhotoImage(self.ima, master=self.ventana)
         self.pos += 1
         return self.img
@@ -87,3 +87,4 @@ class JuegoVocales:
 if __name__ == "__main__":
     juego = JuegoVocales()
     juego.iniciar()
+

@@ -10,6 +10,8 @@ from pynput.keyboard import Key, Listener
 from tkinter import ttk
 
 
+
+
 ventana1 = tkinter.Tk()
 ventana1.title("Dificultad")
 ventana1.geometry('250x150')
@@ -30,16 +32,6 @@ def iniciarJuego(nivel):
         'Pa,Pe,Pi,Po,Pu',
         'Ma,Me,Mi,Mo,Mu'
         }
-
-
-
-
-
-
-
-
-
-
 
 
 
