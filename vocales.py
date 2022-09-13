@@ -12,6 +12,7 @@ class JuegoVocales:
         self.vocales = ["A", "E", "I", "O", "U"]
         self.ventana = tkinter.Tk()
         self.ventana.resizable(height=False, width=False)
+        self.ventana.config(bg="#7FFFD4")
         self.frame = tkinter.Frame(self.ventana)
         self.frame2 = tkinter.Frame(self.ventana)
         self.frame3 = tkinter.Frame(self.ventana)

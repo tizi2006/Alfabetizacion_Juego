@@ -1,5 +1,4 @@
 import tkinter
-from tkinter import ttk
 from PIL import ImageTk, Image
 import os
 import random
@@ -7,9 +6,10 @@ from functools import partial
 import time
 
 
-class JuegoVocales:
+class JuegoPaMa:
     
     def __init__(self):
+        self.consonantes= ["P", "M"]
         self.vocales = ["A", "E", "I", "O", "U"]
         self.ventana = tkinter.Tk()
         self.ventana.resizable(height=False, width=False)
@@ -21,7 +21,16 @@ class JuegoVocales:
         self.frame2.grid(row=1, column=0)
         self.frame3.grid(row=0, column=0)
         self.frame4.grid(row=2, column=0)
-        self.contenido1 = os.listdir('fotos/')
+        self.frame5 = tkinter.Frame(self.frame4, height=30,width=87.5)
+        self.frame52 = tkinter.Frame(self.frame4, height=30,width=87.5)
+        self.frames = [self.frame5, self.frame52]
+        self.frame6 = tkinter.Frame(self.frame4, height=175)
+        self.frame5.grid_propagate(0)
+        self.frame5.grid(row=0, column=0)
+        self.frame52.grid_propagate(0)
+        self.frame52.grid(row=0, column=1)
+        self.frame6.grid(row=0, column=2)
+        self.contenido1 = os.listdir('PPP/')
         self.rango = (len(self.contenido1))
         self.contenido = []
         self.puntos = 0
@@ -29,16 +38,24 @@ class JuegoVocales:
         self.mezclar()
         self.foto = self.sortear()
         self.panel = tkinter.Label(self.frame2)
-        print(self.foto)
         self.panel.config(image=self.foto)
         self.panel.pack(side="bottom", fill="both", expand="yes")
         self.eaa = tkinter.Label(self.frame3, text= "ACERTADAS:"+str(self.puntos))
         self.eaa.pack()
+        for i in range(2):
+            self.boton_lista = []
+            ubi = ["W","E"]
+            self.boton = tkinter.Button(self.frames[i], command=partial(self.v2, i), text=self.consonantes[i])
+            self.boton_lista.append(self.boton)
+            self.boton.grid(column=i, row=0, sticky=ubi[i])
+        self.frame5.grid_columnconfigure(0, weight=0)
+        self.frame52.grid_columnconfigure(0, weight=0)
         for i in range(5):
             self.boton_lista = []
-            self.boton = tkinter.Button(self.frame4, command=partial(self.v2, i), text=self.vocales[i])
+            self.boton = tkinter.Button(self.frame6, command=partial(self.v2, i), text=self.vocales[i])
             self.boton_lista.append(self.boton)
             self.boton.grid(column=i, row=0)
+            
         self.ventana.bind("<Key>", self.tecla)
         self.indice = ""
 
@@ -56,8 +73,8 @@ class JuegoVocales:
             self.v2(self.indice)
 
     def sortear(self):
-        self.ima = Image.open('fotos/' + self.contenido[self.pos])
-        self.img = ImageTk.PhotoImage(self.ima)
+        self.ima = Image.open('PPP/' + self.contenido[self.pos])
+        self.img = ImageTk.PhotoImage(self.ima, master=self.ventana)
         self.pos += 1
         return self.img
 
@@ -86,46 +103,6 @@ class JuegoVocales:
             self.panel.config(image=self.foto)
 
 
-
-
-
-class Juego:
-
-    def __init__(self):
-        self.ventana1 = tkinter.Tk()
-        self.ventana1.title("Dificultad")
-        self.ventana1.geometry('250x150')
-        self.ls_des = ttk.Combobox(self.ventana1,width=17)
-        self.ls_des.place(x=30,y=77)
-        self.opciones = ["Vocales","Pa,Pe,Pi,Po,Pu","Ma,Me,Mi,Mo,Mu"]
-        self.ls_des['values']=self.opciones
-        self.boton2 = ttk.Button(text="Jugar", command=self.iniciar_main)
-        self.boton2.place(x=70, y=100)
-        self.nivel = ""
-        self.juego = ""
-        self.niveles = {
-            'Vocales': JuegoVocales, 
-            'Pa,Pe,Pi,Po,Pu': 10,
-            'Ma,Me,Mi,Mo,Mu': 10
-        }
-        self.ventana1.mainloop()
-
-    def iniciar_main(self):
-        self.nivel = self.ls_des.get()
-        self.iniciarjuego()
-
-    def iniciarjuego(self):
-        self.juego = self.niveles[self.nivel]()
-        self.juego.contenido1 = os.listdir('fotos/')
-        self.juego.iniciar()
-
 if __name__ == "__main__":
-    juego = Juego()
-
-
-
-
-if __name__ == "__main__":
-    juego = JuegoVocales()
+    juego = JuegoPaMa()
     juego.iniciar()
-

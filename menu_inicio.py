@@ -11,9 +11,11 @@ class Juego:
         self.ventana1 = tkinter.Tk()
         self.ventana1.title("Dificultad")
         self.ventana1.geometry('250x150')
+        self.ventana1.resizable(height=False, width=False)
+        self.ventana1.config(bg="#7FFFD4")
         self.ls_des = ttk.Combobox(self.ventana1,width=17)
         self.ls_des.place(x=30,y=77)
-        self.opciones = ["Vocales","Pa,Pe,Pi,Po,Pu","Ma,Me,Mi,Mo,Mu"]
+        self.opciones = ["Vocales","Pa,Ma"]
         self.ls_des['values']=self.opciones
         self.boton2 = ttk.Button(text="Jugar", command=self.iniciar_main)
         self.boton2.place(x=70, y=100)
@@ -21,8 +23,7 @@ class Juego:
         self.juego = ""
         self.niveles = {
             'Vocales': JuegoVocales,
-            'Pa,Pe,Pi,Po,Pu': 10,
-            'Ma,Me,Mi,Mo,Mu': 10
+            'Pa,Ma': 10,
         }
         self.ventana1.mainloop()
 
