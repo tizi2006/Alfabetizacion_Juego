@@ -55,21 +55,12 @@ class JuegoVocales:
             self.v2(self.indice)
 
     def sortear(self):
+        print("sortear")
         self.ima = Image.open('fotos/' + self.contenido[self.pos])
         self.img = ImageTk.PhotoImage(self.ima, master=self.ventana)
         self.pos += 1
         return self.img
 
-    def recargar(self, panel):
-        panel.destroy()
-        self.intermedia()
-        
-    def intermedia(self):
-        time.sleep(0.5)
-        self.frame = tkinter.Frame(self.ventana)
-        self.frame.grid(row=0, column=0)
-        self.panel = tkinter.Label(self.frame)
-        self.sortear()
 
     def v2(self, i):
         if self.vocales[i] == self.contenido[self.pos-1][0].upper():
