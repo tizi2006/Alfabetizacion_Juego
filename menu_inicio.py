@@ -1,6 +1,7 @@
 import tkinter
 from tkinter import ttk
 from vocales import JuegoVocales
+from PaMa import JuegoPaMa
 from PIL import ImageTk, Image
 import os
 
@@ -23,7 +24,7 @@ class Juego:
         self.juego = ""
         self.niveles = {
             'Vocales': JuegoVocales,
-            'Pa,Ma': 10,
+            'Pa,Ma': JuegoPaMa,
         }
         self.ventana1.mainloop()
 

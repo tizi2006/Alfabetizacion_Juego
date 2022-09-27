@@ -72,9 +72,13 @@ class JuegoPaMa:
         self.ventana.mainloop()
 
     def tecla(self, e):
+        print(e)
         if e.char.upper() in self.vocales:
             self.indice = self.vocales.index(e.char.upper())
-            self.v2(self.indice)
+            self.press_vocal(self.indice)
+        elif e.char.upper() in self.consonantes:
+            self.indice = self.consonantes.index(e.char.upper())
+            self.press_cons(self.indice)
 
     def sortear(self):
         self.ima = Image.open('PPP/' + self.contenido[self.pos])
@@ -83,11 +87,13 @@ class JuegoPaMa:
         return self.img
 
     def press_cons(self, i):
+        print(i)
         self.lista_btn_cons[i-1].config(relief=tkinter.RAISED)
         self.lista_btn_cons[i].config(relief=tkinter.SUNKEN)
         self.cons = self.lista_btn_cons[i].cget("text")
         
     def press_vocal(self, i):
+        print(i)
         if self.cons:
             self.resp = self.cons + self.lista_btn_vocales[i].cget("text")
             if self.resp.upper() == self.contenido[self.pos-1][0:2].upper():
