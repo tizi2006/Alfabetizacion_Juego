@@ -40,7 +40,3 @@ class Juego:
 
 if __name__ == "__main__":
     juego = Juego()
-    
-    
-
-
