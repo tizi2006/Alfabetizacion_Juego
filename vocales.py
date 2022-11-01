@@ -22,7 +22,10 @@ class JuegoVocales:
         menubar1.add_separator()
         menubar1.add_command(label="Exit", command=self.ventana.quit)
         menubar.add_cascade(label="Juegos", menu=menubar1)
+<<<<<<< HEAD
+=======
         menubar.add_cascade(label="Juegos", menu=menubar1)
+>>>>>>> 1520eca6c3a09b3ed43dae5b3a3b0d8d82521adf
         self.ventana.config(menu=menubar)
         self.frame = tkinter.Frame(self.ventana)
         self.frame2 = tkinter.Frame(self.ventana)

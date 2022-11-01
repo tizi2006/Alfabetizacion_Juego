@@ -19,6 +19,16 @@ class JuegoPaMa:
         self.img = None
         self.ventana = tkinter.Tk()
         self.ventana.resizable(height=False, width=False)
+        menubar = tkinter.Menu(self.ventana)
+
+        menubar1 = tkinter.Menu(menubar, tearoff=0)
+        menubar1.add_command(label="Ir a PaMa", command=self.cambiarjuego)
+        menubar1.add_command(label="Ir a vocales", command=self.cambiarjuego)
+        menubar1.add_command(label="Ayuda", command=self.cambiarjuego)
+        menubar1.add_separator()
+        menubar1.add_command(label="Exit", command=self.ventana.quit)
+        menubar.add_cascade(label="Juegos", menu=menubar1)
+        self.ventana.config(menu=menubar)
         self.frame = tkinter.Frame(self.ventana)
         self.frame2 = tkinter.Frame(self.ventana)
         self.frame3 = tkinter.Frame(self.ventana)
@@ -106,6 +116,12 @@ class JuegoPaMa:
             self.panel.config(image=self.foto)
             self.lista_btn_cons[0].config(relief=tkinter.RAISED)
             self.lista_btn_cons[1].config(relief=tkinter.RAISED)
+
+
+
+    def cambiarjuego(self):
+        x = 0
+
 
 
 if __name__ == "__main__":
