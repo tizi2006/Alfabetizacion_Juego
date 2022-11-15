@@ -4,6 +4,7 @@ import os
 import random
 from functools import partial
 import time
+from vocales import JuegoVocales
 
 
 class JuegoPaMa:
@@ -22,11 +23,11 @@ class JuegoPaMa:
         menubar = tkinter.Menu(self.ventana)
 
         menubar1 = tkinter.Menu(menubar, tearoff=0)
-        menubar1.add_command(label="Ir a PaMa", command=self.cambiarjuego)
-        menubar1.add_command(label="Ir a vocales", command=self.cambiarjuego)
-        menubar1.add_command(label="Ayuda", command=self.cambiarjuego)
+        menubar1.add_command(label="Ir a PaMa", command=self.cambiarapama)
+        menubar1.add_command(label="Ir a vocales", command=self.cambiaravocales)
+        menubar1.add_command(label="Ayuda", command=self.donothing)
         menubar1.add_separator()
-        menubar1.add_command(label="Exit", command=self.ventana.quit)
+        menubar1.add_command(label="Exit", command=self.ventana.destroy)
         menubar.add_cascade(label="Juegos", menu=menubar1)
         self.ventana.config(menu=menubar)
         self.frame = tkinter.Frame(self.ventana)
@@ -119,8 +120,21 @@ class JuegoPaMa:
 
 
 
-    def cambiarjuego(self):
+    def cambiarapama(self):
+        juego = JuegoPaMa()
+        juego.iniciar()
+        self.ventana.quit
+
+    def cambiaravocales(self):
+        juego = JuegoVocales()
+        juego.iniciar()
+        self.ventana.destroy
+        
+        
+        
+    def donothing(self):
         x = 0
+
 
 
 
