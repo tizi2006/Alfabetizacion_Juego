@@ -1,4 +1,5 @@
 import tkinter
+from tkinter import ttk
 from PIL import ImageTk, Image
 import os
 import random
@@ -16,14 +17,14 @@ class JuegoVocales:
         menubar = tkinter.Menu(self.ventana)
 
         menubar1 = tkinter.Menu(menubar, tearoff=0)
-        menubar1.add_command(label="Ir a PaMa", command=self.donothing)
-        menubar1.add_command(label="Ir a vocales", command=self.donothing)
-        menubar1.add_command(label="Ayuda", command=self.donothing)
+        menubar1.add_command(label="Ir a PaMa", command=self.cambiarapama)
+        menubar1.add_command(label="Ir a vocales", command=self.cambiaravocales)
+        menubar1.add_command(label="Ayuda", command=self.ayuda)
         menubar1.add_separator()
-        menubar1.add_command(label="Exit", command=self.ventana.quit)
-        menubar.add_cascade(label="Juegos", menu=menubar1)
+        menubar1.add_command(label="Salir", command=self.ventana.quit)
         menubar.add_cascade(label="Juegos", menu=menubar1)
         self.ventana.config(menu=menubar)
+        self.ventana.title("Alfabetizacion")
         self.frame = tkinter.Frame(self.ventana)
         self.frame2 = tkinter.Frame(self.ventana)
         self.frame3 = tkinter.Frame(self.ventana)
@@ -89,10 +90,20 @@ class JuegoVocales:
             self.panel.config(image=self.foto)
             
             
-    def donothing(self):
-        x = 0
+            
+    
+    def cambiarapama(self):
+        juego = JuegoPaMa()
+        juego.iniciar()
+        self.ventana.quit
 
+    def cambiaravocales(self):
+        juego = JuegoVocales()
+        juego.iniciar()
+        self.ventana.destroy 
+    
 
+        
 if __name__ == "__main__":
     juego = JuegoVocales()
     juego.iniciar()

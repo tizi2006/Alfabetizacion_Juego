@@ -10,7 +10,7 @@ class Juego:
 
     def __init__(self):
         self.ventana1 = tkinter.Tk()
-        self.ventana1.title("Dificultad")
+        self.ventana1.title("ayuda")
         self.ventana1.geometry('250x150')
         self.ventana1.resizable(height=False, width=False)
         self.ventana1.config(bg="#7FFFD4")

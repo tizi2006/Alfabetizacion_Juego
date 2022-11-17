@@ -25,11 +25,12 @@ class JuegoPaMa:
         menubar1 = tkinter.Menu(menubar, tearoff=0)
         menubar1.add_command(label="Ir a PaMa", command=self.cambiarapama)
         menubar1.add_command(label="Ir a vocales", command=self.cambiaravocales)
-        menubar1.add_command(label="Ayuda", command=self.donothing)
+        menubar1.add_command(label="Ayuda", command=self.ayuda)
         menubar1.add_separator()
-        menubar1.add_command(label="Exit", command=self.ventana.destroy)
+        menubar1.add_command(label="Salir", command=self.ventana.destroy)
         menubar.add_cascade(label="Juegos", menu=menubar1)
         self.ventana.config(menu=menubar)
+        self.ventana.title("Alfabetizacion")
         self.frame = tkinter.Frame(self.ventana)
         self.frame2 = tkinter.Frame(self.ventana)
         self.frame3 = tkinter.Frame(self.ventana)
@@ -132,8 +133,13 @@ class JuegoPaMa:
         
         
         
-    def donothing(self):
-        x = 0
+    def ayuda(self):
+        self.ventana1 = tkinter.Tk()
+        self.ventana1.title("AYUDA")
+        self.ventana1.geometry('250x150')
+        self.ventana1.resizable(height=False, width=False)
+        self.texto = tkinter.Label(self.ventana1, text="Instrucciones:").pack()
+
 
 
 
